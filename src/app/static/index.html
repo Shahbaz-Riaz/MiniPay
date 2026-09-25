@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MiniPay</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>MiniPay</h1>
+
+    <div class="card">
+        <h2>Create Customer</h2>
+
+        <input id="customerRef" placeholder="Customer Reference">
+        <input id="customerName" placeholder="Name">
+
+        <button onclick="createCustomer()">
+            Create Customer
+        </button>
+    </div>
+
+    <div class="card">
+        <h2>Create Payment</h2>
+
+        <input id="customerId" placeholder="Customer ID">
+        <input id="transactionRef" placeholder="Transaction Reference">
+        <input id="amount" type="number" placeholder="Amount">
+
+        <button onclick="createPayment()">
+            Make Payment
+        </button>
+    </div>
+
+    <div class="card">
+        <h2>Find Payment</h2>
+
+        <input id="paymentId" placeholder="Payment ID">
+
+        <button onclick="getPayment()">
+            Find
+        </button>
+    </div>
+
+    <div class="card">
+        <h2>Customer Payments</h2>
+
+        <input id="paymentsCustomerId" placeholder="Customer ID">
+
+        <button onclick="getCustomerPayments()">
+            Find Payments
+        </button>
+    </div>
+
+    <pre id="result">Ready</pre>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>

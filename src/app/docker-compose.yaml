@@ -1,0 +1,30 @@
+services:
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: minipay
+      POSTGRES_USER: minipay
+      POSTGRES_PASSWORD: minipay
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./schema.sql:/docker-entrypoint-initdb.d/01_schema.sql
+      - ./seed.sql:/docker-entrypoint-initdb.d/02_seed.sql
+
+  backend:
+    build: .
+    environment:
+      DATABASE_URL: postgresql://minipay:minipay@db:5432/minipay
+      API_KEY: minipay-key
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  frontend:
+    image: nginx:alpine
+    volumes:
+      - ./static:/usr/share/nginx/html
+    ports:
+      - "8080:80"
